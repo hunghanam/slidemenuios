@@ -32,15 +32,17 @@
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:CGRectMake(0.0f, 0.0f, 30.0f, 30.0f)];
-    [button addTarget:self action:@selector(actionButton) forControlEvents:UIControlEventTouchUpInside];
+    [button addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
     [button setImage:[UIImage imageNamed:@"menu-nomarl"] forState:UIControlStateNormal];
     [button setImage:[UIImage imageNamed:@"menu-touch"] forState:UIControlStateHighlighted];
     UIBarButtonItem *actionButton = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = actionButton;
 }
-- (void)actionButton
+
+// post notification with name notificationShowRightContent
+- (void)buttonClicked
 {
-    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"notificationShowRightContent" object:self];
 }
 /*
 #pragma mark - Navigation
